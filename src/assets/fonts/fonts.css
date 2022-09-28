@@ -1,0 +1,14 @@
+@font-face {
+  font-family: "cubano";
+  src: url("src/assets/fonts/Cubano.ttf") format("opentype");
+}
+
+@font-face {
+  font-family: "sofia-pro-light";
+  src: url("src/assets/fonts/sofiapro-light.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "sofia-pro-semibold";
+  src: url("src/assets/fonts/sofiapro-semi-bold.ttf") format("opentype");
+}

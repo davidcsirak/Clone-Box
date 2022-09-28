@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "clone-box-4826d": {
+      "hosting": {
+        "clone-box": [
+          "clone-box-4826d"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "clone-box-4826d"
+  }
+}

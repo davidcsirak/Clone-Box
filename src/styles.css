@@ -1,1 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
+
+.landing-page {
+  font-family: 'sofia-pro-semibold', sans-serif;
+  /*background-color: #FCF4ED;*/
+}
+
+.navbar-top {
+  font-family: 'cubano', sans-serif;
+  --logo-color: #283132;
+}
+
+
+
+
