@@ -1,4 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+  --dark-grey: #283132;
+  --light-grey: rgba(0, 0, 0, 0.3);
+  --cream: #F8E7D7;
+  --light-cream: #FCF4ED;
+}
 
 .landing-page {
   font-family: 'sofia-pro-semibold', sans-serif;

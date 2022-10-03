@@ -70,4 +70,8 @@ export class AuthComponent implements OnInit, OnDestroy {
     this.authService.signInWithGoogle();
     this.authForm.reset();
   }
+
+  closeError() {
+    this.errorMessage = null;
+  }
 }

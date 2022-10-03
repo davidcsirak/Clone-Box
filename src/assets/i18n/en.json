@@ -1,0 +1,19 @@
+{
+  "EMAIL_ADRESS": "Email address",
+  "PASSWORD": "Password",
+  "PLEASE_LOG_IN": "Please Log in",
+  "PLEASE_SIGN_UP": "Please Sign up",
+  "REMEMBER_ME": "Remember me",
+  "LOGIN_BUTTON": "Login",
+  "SIGN_UP_BUTTON": "Sign Up",
+  "OR" : "or",
+  "CONTINUE_WITH_GOOGLE": "Continue with Google",
+  "NO_ACC_SIGN_UP": "No account? Sign up",
+  "YES_ACC_LOG_IN": "Already have an account? Login",
+  "UNKNOWN_ERROR": "An unknown error occurred!",
+  "EMAIL_EXISTS_ERROR": "This email exists already!",
+  "INVALID_EMAIL_ERROR": "This email does not exist!",
+  "WRONG_PASSWORD_ERROR": "This password is not correct!",
+  "EMAIL_NOT_EXISTS_ERROR": "This email does not exist!",
+  "TOO_MANY_REQUESTS_ERROR": "Access to this account has been temporarily disabled due to many failed login attempts. Try again later!"
+}

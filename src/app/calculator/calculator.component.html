@@ -1,0 +1,63 @@
+<div class="row justify-content-center pt-5">
+  <div class="div col-6">
+
+    <form [formGroup]="calcForm" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="col-md-12">
+          <button class="btn btn-secondary" (click)="onAddItem()">Add</button>
+        </div>
+      </div>
+      <hr>
+      <div class="row text-center">
+        <div class="col-2"><label for="boxType">Box type</label></div>
+        <div class="col-2"><label for="structure">Structure</label></div>
+        <div class="col"><label for="length"></label>Length (mm)</div>
+        <div class="col"><label for="width"></label>Width (mm)</div>
+        <div class="col"><label for="height"></label>Height (mm)</div>
+        <div class="col"><label for="quantity"></label>Quantity</div>
+        <div class="col"></div>
+      </div>
+      <div class="row">
+        <div class="col-md-12" formArrayName="items">
+          <div
+            class="row my-3"
+            *ngFor="let itemsCtrl of controls; let i = index;"
+            [formGroupName]=i>
+            <div class="col-2 text-center">
+              <select class="form-select" id="boxType" formControlName="boxType">
+                <option value="1">asd</option>
+              </select>
+              <div class="row pt-2">
+                <div class="col-12">
+                  <img src="./assets/images/classic_box.jpg" class="img-fluid rounded shadow-sm">
+                </div>
+              </div>
+            </div>
+            <div class="col-2 text-center">
+              <select class="form-select" id="structure" formControlName="structure">
+                <option value="1">One</option>
+              </select>
+              <div class="row pt-2">
+                <div class="col-12">
+                  <img src="./assets/images/CO5_8mm.jpg" class="img-fluid rounded shadow-sm">
+                </div>
+              </div>
+            </div>
+
+            <div class="col"><input type="number" class="form-control" id="length" formControlName="length"></div>
+            <div class="col"><input type="number" class="form-control" id="width" formControlName="width"></div>
+            <div class="col"><input type="number" class="form-control" id="height" formControlName="height"></div>
+            <div class="col"><input type="number" class="form-control" id="quantity" formControlName="quantity"></div>
+            <div class="col"><button *ngIf="i > 0" class="btn btn-danger" (click)="onDeleteItem(i)">X</button></div>
+          </div>
+        </div>
+      </div>
+      <div class="row my-4">
+        <div class="col-md-12 text-center">
+          <button class="btn btn-success" type="submit" [disabled]="!calcForm.valid">Calculate</button>
+        </div>
+      </div>
+    </form>
+
+  </div>
+</div>

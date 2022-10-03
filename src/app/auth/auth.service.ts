@@ -3,7 +3,7 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { GoogleAuthProvider } from '@angular/fire/auth';
-import { collectionSnapshots } from '@angular/fire/firestore';
+import { UsersService } from '../shared/services/users.service';
 
 @Injectable({
   providedIn: 'root',
@@ -13,13 +13,19 @@ export class AuthService {
   isLoading = new Subject<boolean>();
   provider = new GoogleAuthProvider();
 
-  constructor(private fireAuth: AngularFireAuth, private router: Router) {}
+  constructor(
+    private fireAuth: AngularFireAuth,
+    private router: Router,
+    private usersService: UsersService
+  ) {}
 
   signUp(email: string, password: string) {
     this.fireAuth
       .createUserWithEmailAndPassword(email, password)
       .then((res) => {
-        console.log(res.user);
+        //creating user in database
+        this.usersService.addUser({ uid: res.user.uid, email: res.user.email });
+
         this.isLoading.next(false);
         this.router.navigate(['']);
       })
@@ -43,13 +49,9 @@ export class AuthService {
   }
 
   logout() {
-    this.fireAuth.authState.subscribe((user) => {
-      if (user && user.uid) {
-        this.fireAuth.signOut().then((r) => {
-          console.log('logged out!');
-          this.router.navigate(['/auth']);
-        });
-      }
+    this.fireAuth.signOut().then((r) => {
+      console.log('logged out!');
+      this.router.navigate(['/auth']);
     });
   }
 
@@ -57,38 +59,38 @@ export class AuthService {
     this.fireAuth
       .signInWithPopup(this.provider)
       .then((res) => {
-        console.log(res);
+        //creating user in database
+        this.usersService.addUser({ uid: res.user.uid, email: res.user.email });
+
         this.isLoading.next(false);
         this.router.navigate(['']);
       })
       .catch((errorRes) => {
         this.isLoading.next(false);
         this.handleError(errorRes.code);
-        console.log(errorRes);
       });
   }
 
   private handleError(errorCode: any) {
-    let errorMessage = 'An unknown error occurred!';
+    let errorMessage = 'UNKNOWN_ERROR';
     if (!errorCode) {
       this.errorMessage.next(errorMessage);
     } else {
       switch (errorCode) {
         case 'auth/email-already-in-use':
-          errorMessage = 'This email exists already!';
+          errorMessage = 'EMAIL_EXISTS_ERROR';
           break;
         case 'auth/invalid-email':
-          errorMessage = 'This email does not exist!';
+          errorMessage = 'INVALID_EMAIL_ERROR';
           break;
         case 'auth/wrong-password':
-          errorMessage = 'This password is not correct!';
+          errorMessage = 'WRONG_PASSWORD_ERROR';
           break;
         case 'auth/user-not-found':
-          errorMessage = 'This email does not exist!';
+          errorMessage = 'EMAIL_NOT_EXISTS_ERROR';
           break;
         case 'auth/too-many-requests':
-          errorMessage =
-            'Access to this account has been temporarily disabled due to many failed login attempts. Try again later';
+          errorMessage = 'TOO_MANY_REQUESTS_ERROR';
           break;
       }
       this.errorMessage.next(errorMessage);

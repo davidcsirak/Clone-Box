@@ -1,7 +1,7 @@
-<nav class="navbar-top navbar navbar-expand-lg bg-light">
-  <div class="container-fluid">
+<nav class="navbar-top navbar navbar-expand-lg bg-light shadow-sm">
+  <div class="container-fluid" id="header-container">
     <a class="navbar-brand" style="cursor: pointer" [routerLink]="['']">
-      <img src="/assets/images/clone_box_logo.svg" alt="clone_box_logo" width="120" height="70">
+      <img src="/assets/images/clone_box_logo.svg" alt="clone_box_logo" width="120">
     </a>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -9,14 +9,18 @@
     </button>
 
     <div class="collapse navbar-collapse justify-content-center" id="navbarNavAltMarkup">
-      <div class="navbar-nav text-center">
-        <a class="nav-link active" aria-current="page">Home</a>
-        <a class="nav-link">Products</a>
-        <a class="nav-link">Calculator</a>
+      <div class="navbar-nav text-center" routerLinkActive="active">
+        <a class="nav-link" style="cursor: pointer">Home</a>
+        <a class="nav-link" style="cursor: pointer">Products</a>
+        <a class="nav-link" style="cursor: pointer" routerLink="calculator">Calculator</a>
         <a *ngIf="!isAuthenticated" class="nav-link" routerLink="auth">Authentication</a>
-        <a *ngIf="isAuthenticated" class="nav-link">Command History</a>
+        <a *ngIf="isAuthenticated" class="nav-link" style="cursor: pointer">Command History</a>
+        <a *ngIf="isAuthenticated" class="nav-link" (click)="usersService.getCurrentUserData(currentUserUid)">Get userinfo from database</a>
       </div>
     </div>
+
+    <div (click)="onLanguageChange('hu')" style="cursor: pointer">HU</div>
+    <div class="px-5" (click)="onLanguageChange('en')" style="cursor: pointer">EN</div>
 
     <svg *ngIf="isAuthenticated" (click)="onLogOut()" xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-box-arrow-right" style="cursor: pointer" viewBox="0 0 16 16">
       <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"/>

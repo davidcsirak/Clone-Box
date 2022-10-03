@@ -1,0 +1,19 @@
+{
+  "EMAIL_ADRESS": "Email cím",
+  "PASSWORD": "Jelszó",
+  "PLEASE_LOG_IN": "Kérlek jelentkezz be",
+  "PLEASE_SIGN_UP": "Kérlek regisztrálj be",
+  "REMEMBER_ME": "Emlékezz rám",
+  "LOGIN_BUTTON": "Bejelentkezés",
+  "SIGN_UP_BUTTON": "Regisztráció",
+  "OR": "vagy",
+  "CONTINUE_WITH_GOOGLE": "Folytatás Google-lal",
+  "NO_ACC_SIGN_UP": "Nincs fiókod? Regisztrálj",
+  "YES_ACC_LOG_IN": "Már van fiókod? Jelentkezz be",
+  "UNKNOWN_ERROR": "Ismeretlen hiba történt!",
+  "EMAIL_EXISTS_ERROR": "Ez az email már létezik!",
+  "INVALID_EMAIL_ERROR": "Ez az email nem létezik!",
+  "WRONG_PASSWORD_ERROR": "Hibás jelszó!",
+  "EMAIL_NOT_EXISTS_ERROR": "Ez az email nem létezik!",
+  "TOO_MANY_REQUESTS_ERROR": "Túl sok próbálkozás. Próbálja újra később!"
+}

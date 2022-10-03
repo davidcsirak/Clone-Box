@@ -1,13 +1,13 @@
 <div class="row">
-  <div class="col-12" style="margin-top: 20vh;">
+  <div class="col-12" style="margin-top: 15vh;">
     <div class="row justify-content-center">
-      <div *ngIf="isLoading" style="text-align: center">
+      <div *ngIf="isLoading" style="text-align: center;">
         <app-loading-spinner></app-loading-spinner>
       </div>
       <div class="col-md-5 col-lg-4 col-xl-3 rounded p-5 shadow-lg" style="background-color: white;" *ngIf="!isLoading">
         <form (ngSubmit)="onSubmit()" [formGroup]="authForm" class="text-center">
-          <img src="/assets/images/clone_box_logo_rounded.svg" alt="clone_box_logo" width="250" height="250" class="" style="position: absolute; top: 17vh; bottom: 0; left: 0; right: 0; margin: 0 auto;">
-          <h1 class="h3 mb-3 fw-normal py-5">{{ isLoginMode ? 'Please Log in' : 'Please Sign Up' }}</h1>
+          <img src="/assets/images/clone_box_logo_rounded.svg" alt="clone_box_logo" width="250" height="250" class="" style="position: absolute; top: 12vh; bottom: 0; left: 0; right: 0; margin: 0 auto;">
+          <h1 class="h3 mb-3 fw-normal py-5">{{ isLoginMode ? ('PLEASE_LOG_IN' | translate) : ('PLEASE_SIGN_UP' | translate) }}</h1>
 
           <div class="form-floating">
             <input
@@ -17,7 +17,7 @@
               placeholder="name@example.com"
               formControlName="email"
               [ngClass]="{'is-invalid': authForm.get('email').touched && authForm.get('email').invalid, 'is-valid': authForm.get('email').touched && authForm.get('email').valid}">
-            <label for="email">Email address</label>
+            <label for="email">{{ 'EMAIL_ADRESS' | translate }}</label>
           </div>
           <div class="form-floating">
             <input
@@ -27,26 +27,27 @@
               placeholder="Password"
               formControlName="password"
               [ngClass]="{'is-invalid': authForm.get('password').touched && authForm.get('password').invalid, 'is-valid': authForm.get('password').touched && authForm.get('password').valid}">
-            <label for="password">Password</label>
+            <label for="password">{{ 'PASSWORD' | translate }}</label>
           </div>
           <div *ngIf="isLoginMode" class="checkbox mt-2 text-start" style="padding-left: 10px;">
             <label>
-              <input type="checkbox" value="remember-me"> Remember me
+              <input type="checkbox" value="remember-me"> {{ 'REMEMBER_ME' | translate }}
             </label>
           </div>
-          <div *ngIf="errorMessage" class="py-2" style="color: red; font-weight: lighter">
-            {{ errorMessage }}
+          <div *ngIf="errorMessage" class="alert alert-danger my-4" role="alert">
+            <div class="d-flex justify-content-between"><i class="bi bi-exclamation-triangle-fill"></i>{{ errorMessage | translate }}<i (click)="closeError()" class="bi bi-x" style="cursor: pointer;"></i></div>
           </div>
           <hr>
-          <a class="link-dark" style="cursor: pointer;" (click)="onSwitchMode()">{{ isLoginMode ? 'No account? Sign Up' : 'Already have account? Login' }}</a>
+          <a style="cursor: pointer; color: var(--dark-grey)" (click)="onSwitchMode()">{{ isLoginMode ? ('NO_ACC_SIGN_UP' | translate) : ('YES_ACC_LOG_IN' | translate) }}</a>
           <hr>
-          <button class="w-100 btn btn-lg btn-secondary" type="submit" [disabled]="authForm.invalid">{{ isLoginMode ? 'Login' : 'Sign Up' }}</button>
-          <div class="my-2 text-muted">
-            or
+          <button class="w-100 btn btn-lg btn-secondary" type="submit" [disabled]="authForm.invalid">{{ isLoginMode ? ('LOGIN_BUTTON' | translate) : ('SIGN_UP_BUTTON' | translate) }}</button>
+          <div class="my-2">
+            {{ 'OR' | translate }}
           </div>
-          <button class="w-70 btn btn-lg btn-outline-secondary d-inline-flex align-items-center justify-content-start" (click)="onGoogle()"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-google" viewBox="0 0 16 16">
-            <path d="M15.545 6.558a9.42 9.42 0 0 1 .139 1.626c0 2.434-.87 4.492-2.384 5.885h.002C11.978 15.292 10.158 16 8 16A8 8 0 1 1 8 0a7.689 7.689 0 0 1 5.352 2.082l-2.284 2.284A4.347 4.347 0 0 0 8 3.166c-2.087 0-3.86 1.408-4.492 3.304a4.792 4.792 0 0 0 0 3.063h.003c.635 1.893 2.405 3.301 4.492 3.301 1.078 0 2.004-.276 2.722-.764h-.003a3.702 3.702 0 0 0 1.599-2.431H8v-3.08h7.545z"/>
-          </svg><span style="padding-left: 10px;">{{ isLoginMode ? 'Log in with Google' : 'Sign up with Google' }}</span></button>
+          <button class="w-70 btn btn-lg btn-outline-secondary d-inline-flex align-items-center justify-content-start" (click)="onGoogle()">
+            <img src="./assets/images/google_icon.svg" alt="" width="30">
+            <span style="padding-left: 10px;">{{ 'CONTINUE_WITH_GOOGLE' | translate }}</span>
+          </button>
         </form>
       </div>
     </div>

@@ -6,6 +6,7 @@ import {
   AngularFireAuthGuard,
   redirectLoggedInTo,
 } from '@angular/fire/compat/auth-guard';
+import { CalculatorComponent } from './calculator/calculator.component';
 
 const redirectLoggedInToHome = () => redirectLoggedInTo(['']);
 
@@ -19,6 +20,10 @@ const routes: Route[] = [
     component: AuthComponent,
     canActivate: [AngularFireAuthGuard],
     data: { authGuardPipe: redirectLoggedInToHome },
+  },
+  {
+    path: 'calculator',
+    component: CalculatorComponent,
   },
 ];
 
