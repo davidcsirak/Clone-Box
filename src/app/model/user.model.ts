@@ -1,7 +1,9 @@
 import { Order } from './order.model';
 
-export interface User {
-  uid: string;
-  email: string;
-  orders?: Order[];
+export class User {
+  constructor(
+    public uid: string,
+    public email: string,
+    public orders?: Order[]
+  ) {}
 }

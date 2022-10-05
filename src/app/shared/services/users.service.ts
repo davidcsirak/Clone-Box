@@ -3,28 +3,20 @@ import { User } from '../../model/user.model';
 import {
   AngularFirestore,
   AngularFirestoreCollection,
-  AngularFirestoreDocument,
 } from '@angular/fire/compat/firestore';
-import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UsersService {
-  //private userDoc: AngularFirestoreDocument<User>;
-  private userCol: AngularFirestoreCollection<User>;
-  //userColObs: Observable<User[]>;
-  //userDocObs: Observable<User>;
+  private userColl: AngularFirestoreCollection<User>;
 
   constructor(private afs: AngularFirestore) {
-    //this.userDoc = this.afs.doc('users');
-    //this.userCol = this.afs.collection('users');
-    //this.userDocObs = this.userDoc.valueChanges();
-    //this.userColObs = this.userCol.valueChanges();
+    this.userColl = afs.collection('users');
   }
 
   addUser(user: User) {
-    this.userCol.add(user).then((userRef) => {
+    this.userColl.add(user).then((userRef) => {
       console.log('User created in database!', userRef);
     });
   }

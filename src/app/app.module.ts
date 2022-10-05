@@ -7,7 +7,7 @@ import { AuthComponent } from './auth/auth.component';
 import { HeaderComponent } from './header/header.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { AppRoutingModule } from './app-routing.module';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { AngularFireModule } from '@angular/fire/compat';
 import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
@@ -45,6 +45,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     provideFirestore(() => getFirestore()),
     AppRoutingModule,
     ReactiveFormsModule,
+    FormsModule,
     HttpClientModule,
   ],
   providers: [],

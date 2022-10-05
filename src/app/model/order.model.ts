@@ -1,10 +1,12 @@
 import { User } from './user.model';
 import { Item } from './item.model';
 
-export interface Order {
-  user: User;
-  companyName: string;
-  telephone: string;
-  address: string;
-  items: Item[];
+export class Order {
+  constructor(
+    public user: User,
+    public companyName: string,
+    public telephone: string,
+    public address: string,
+    public items: Item[]
+  ) {}
 }

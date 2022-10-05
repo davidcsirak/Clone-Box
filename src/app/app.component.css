@@ -10,6 +10,6 @@ html, body {
 
 #app-container {
   min-height: 100vh;
-  background-color: var(--cream);
+  background-color: var(--background-grey);
 }
 

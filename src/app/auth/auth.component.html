@@ -29,6 +29,9 @@
               [ngClass]="{'is-invalid': authForm.get('password').touched && authForm.get('password').invalid, 'is-valid': authForm.get('password').touched && authForm.get('password').valid}">
             <label for="password">{{ 'PASSWORD' | translate }}</label>
           </div>
+          <div *ngIf="!isLoginMode" id="passwordHelpBlock" class="form-text">
+            {{ 'PASSW_MIN_6_HELP' | translate }}
+          </div>
           <div *ngIf="isLoginMode" class="checkbox mt-2 text-start" style="padding-left: 10px;">
             <label>
               <input type="checkbox" value="remember-me"> {{ 'REMEMBER_ME' | translate }}
