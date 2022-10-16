@@ -15,6 +15,13 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { CalculatorComponent } from './calculator/calculator.component';
+import { OfferComponent } from './offer/offer.component';
+import { OrderComponent } from './offer/order/order.component';
+import { NgxIntlTelInputModule } from 'ngx-intl-tel-input';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { OrderSuccessfullComponent } from './offer/order/order-successfull/order-successfull.component';
+import { OrderHistoryComponent } from './order-history/order-history.component';
+import { FooterComponent } from './footer/footer.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -29,6 +36,11 @@ export function HttpLoaderFactory(http: HttpClient) {
     LandingPageComponent,
     LoadingSpinnerComponent,
     CalculatorComponent,
+    OfferComponent,
+    OrderComponent,
+    OrderSuccessfullComponent,
+    OrderHistoryComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,13 +52,13 @@ export function HttpLoaderFactory(http: HttpClient) {
         deps: [HttpClient],
       },
     }),
-    //provideFirebaseApp(() => initializeApp(environment.firebase)),
-    //provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
+    NgxIntlTelInputModule,
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

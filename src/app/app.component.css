@@ -4,12 +4,9 @@ html, body {
   margin: 0;
 }
 
-/*.container, .container-fluid {
-  min-height: 100vh;
-}*/
-
 #app-container {
   min-height: 100vh;
   background-color: var(--background-grey);
 }
+
 

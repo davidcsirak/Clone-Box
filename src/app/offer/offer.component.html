@@ -1,0 +1,83 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col">
+      <div class="row justify-content-center pt-5">
+        <div class="col-md-12 col-lg-10 col-xl-8">
+          <div class="row" *ngIf="calculationResult">
+            <div class="col-md-12">
+
+              <div class="row">
+                <div class="col-sm-12 col-md-6 col-xl">
+                  <div class="card mb-4 rounded-3 shadow-sm">
+                    <div class="card-header py-3 text-bg-secondary border-secondary text-center">
+                      <h4 class="my-0 fw-normal" style="min-height: 57px;">{{ 'TOTAL_PRICE' | translate }}</h4>
+                      <hr>
+                      <img src="./assets/images/box_price.png" width="40" height="40">
+                    </div>
+                    <div class="card-body text-center">
+                      <h3 class="card-title pricing-card-title">{{ calculationResult.price }}</h3>
+                      <h4><small class="text-muted fw-light"><i class="bi bi-currency-euro"></i></small></h4>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-12 col-md-6 col-xl">
+                  <div class="card mb-4 rounded-3 shadow-sm">
+                    <div class="card-header py-3 text-bg-secondary border-secondary text-center">
+                      <h4 class="my-0 fw-normal" style="min-height: 57px;">{{ 'MATERIAL_AREA' | translate }}</h4>
+                      <hr>
+                      <img src="./assets/images/material_area.png" width="40" height="40">
+                    </div>
+                    <div class="card-body text-center">
+                      <h3 class="card-title pricing-card-title">{{ calculationResult.materialArea }}</h3>
+                      <h4><small class="text-muted fw-bold">&#13217;</small></h4>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-12 col-md-4 col-xl">
+                  <div class="card mb-4 rounded-3 shadow-sm">
+                    <div class="card-header py-3 text-bg-secondary border-secondary text-center">
+                      <h4 class="my-0 fw-normal" style="min-height: 57px;">{{ 'TOTAL_BOX_AREA' | translate }}</h4>
+                      <hr>
+                      <img src="./assets/images/box_area.png" width="40" height="40">
+                    </div>
+                    <div class="card-body text-center">
+                      <h3 class="card-title pricing-card-title">{{ calculationResult.boxArea }}</h3>
+                      <h4><small class="text-muted fw-bold">&#13217;</small></h4>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-12 col-md-4 col-xl">
+                  <div class="card mb-4 rounded-3 shadow-sm">
+                    <div class="card-header py-3 text-bg-secondary border-secondary text-center">
+                      <h4 class="my-0 fw-normal" style="min-height: 57px;">{{ 'TOTAL_VOLUME' | translate }}</h4>
+                      <hr>
+                      <img src="./assets/images/box_volume.png" width="40" height="40">
+                    </div>
+                    <div class="card-body text-center">
+                      <h3 class="card-title pricing-card-title">{{ calculationResult.boxVolume }}</h3>
+                      <h4><small class="text-muted fw-light">L</small></h4>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-12 col-md-4 col-xl">
+                  <div class="card mb-4 rounded-3 shadow-sm">
+                    <div class="card-header py-3 text-bg-secondary border-secondary text-center">
+                      <h4 class="my-0 fw-normal" style="min-height: 57px;">{{ 'TOTAL_BOXES' | translate }}</h4>
+                      <hr>
+                      <img src="./assets/images/total_boxes.png" width="40" height="40">
+                    </div>
+                    <div class="card-body text-center">
+                      <h3 class="card-title pricing-card-title">{{ calculationResult.quantity }}</h3>
+                      <h4><small class="text-muted fw-light">{{ 'PIECE' | translate }}</small></h4>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <router-outlet></router-outlet>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

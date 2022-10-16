@@ -1,12 +1,13 @@
-import { User } from './user.model';
-import { Item } from './item.model';
+import { CalculationResult } from './calculationResult.model';
 
 export class Order {
   constructor(
-    public user: User,
+    public calcResult: CalculationResult,
     public companyName: string,
-    public telephone: string,
+    public contactPerson: string,
+    public email: string,
+    public phone: string,
     public address: string,
-    public items: Item[]
+    public orderedAt: number
   ) {}
 }

@@ -1,0 +1,117 @@
+/* For all bigger than tablet */
+@media only screen and (min-width: 992px) {
+  .carousel .carousel-inner {
+    height: 500px;
+  }
+
+  .carousel-item, .carousel-item img {
+    position: absolute;
+    object-fit:cover;
+    top: 0;
+    left: 0;
+    height: 500px;
+  }
+
+  .featurette-heading {
+    font-size: 50px;
+  }
+  .featurette-content {
+    font-size: 20px;
+  }
+}
+
+/* For Tablets */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .carousel .carousel-inner {
+    height: 400px;
+  }
+
+  .carousel-item, .carousel-item img {
+    position: absolute;
+    object-fit:cover;
+    top: 0;
+    left: 0;
+    height: 400px;
+  }
+
+  .userEmail-heading {
+    font-size: 30px;
+  }
+
+}
+
+/* For all mobiles */
+@media only screen and (max-width: 767px) {
+  .carousel .carousel-inner {
+    height: 300px;
+  }
+
+  .carousel-item, .carousel-item img {
+    position: absolute;
+    object-fit:cover;
+    top: 0;
+    left: 0;
+    height: 300px;
+  }
+
+  .product_image {
+    max-height: 250px;
+  }
+
+  .featurette-heading {
+    font-size: 35px;
+  }
+  .featurette-content {
+    font-size: 12px;
+  }
+
+  .userEmail-heading {
+    font-size: 20px;
+  }
+}
+
+#clone-box-carousel {
+  margin-bottom: 5rem;
+}
+
+@media (min-width: 1400px) {
+  .container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+    max-width: 1320px;
+  }
+}
+
+.container, .container-fluid, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+  --bs-gutter-x: 1.5rem;
+  --bs-gutter-y: 0;
+  width: 100%;
+  padding-right: calc(var(--bs-gutter-x) * .5);
+  padding-left: calc(var(--bs-gutter-x) * .5);
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.marketing .col-lg-4 {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.divider {
+  margin: 5rem 0;
+}
+.last-divider {
+  margin-top: 5rem;
+  margin-bottom: 0 !important;
+}
+
+.featurette-heading {
+  letter-spacing: -.05rem;
+  font-family: 'cubano', sans-serif;
+}
+
+.function-heading {
+  font-family: 'cubano', sans-serif;
+}
+
+.userEmail-heading {
+  font-family: 'cubano', sans-serif;
+}

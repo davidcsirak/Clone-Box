@@ -24,10 +24,13 @@ export class AuthService {
       .createUserWithEmailAndPassword(email, password)
       .then((res) => {
         //creating user in database
-        this.usersService.addUser({ uid: res.user.uid, email: res.user.email });
-
+        this.usersService.checkAndAddUser({
+          uid: res.user.uid,
+          email: res.user.email,
+          orders: [],
+        });
         this.isLoading.next(false);
-        this.router.navigate(['']);
+        this.router.navigate(['/home']);
       })
       .catch((errorRes) => {
         this.isLoading.next(false);
@@ -40,7 +43,7 @@ export class AuthService {
       .signInWithEmailAndPassword(email, password)
       .then((res) => {
         this.isLoading.next(false);
-        this.router.navigate(['']);
+        this.router.navigate(['/home']);
       })
       .catch((errorRes) => {
         this.isLoading.next(false);
@@ -59,8 +62,11 @@ export class AuthService {
     this.fireAuth
       .signInWithPopup(this.provider)
       .then((res) => {
-        //creating user in database
-        this.usersService.addUser({ uid: res.user.uid, email: res.user.email });
+        this.usersService.checkAndAddUser({
+          uid: res.user.uid,
+          email: res.user.email,
+          orders: [],
+        });
 
         this.isLoading.next(false);
         this.router.navigate(['']);

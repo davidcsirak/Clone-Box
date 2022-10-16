@@ -1,1 +1,134 @@
-<p>landing-page works!</p>
+<section>
+  <div id="clone-box-carousel" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#clone-box-carousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#clone-box-carousel" data-bs-slide-to="1" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#clone-box-carousel" data-bs-slide-to="2" aria-label="Slide 2"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="./assets/images/banner_slider1.jpg" class="d-block w-100" alt="...">
+      <div class="container">
+        <div *ngIf="!userEmail" class="carousel-caption text-start">
+          <h1 class="function-heading">{{ 'CREATE_ACCOUNT' | translate }}</h1>
+          <p>{{ 'CREATE_ACCOUNT_SHORT_PARAG' | translate }}</p>
+          <p><a class="btn btn-lg btn-dark" (click)="onCreateAccount()">{{ 'CREATE_ACCOUNT_BUTTON' | translate }}<i class="bi bi-chevron-double-right" style="padding-left: 10px;"></i></a></p>
+        </div>
+
+        <div *ngIf="userEmail" class="carousel-caption pb-5 mb-5">
+          <h1 class="userEmail-heading bg-dark rounded text-white d-table px-3">HELLO, <span class="fst-italic">{{ this.userEmail }}</span></h1>
+        </div>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="./assets/images/banner_slider3.jpg" class="d-block w-100" alt="...">
+      <div class="container">
+        <div class="carousel-caption text-end">
+          <h1 class="function-heading">{{ 'ORDER' | translate }}</h1>
+          <p>{{ 'ORDER_SHORT_PARAG' | translate }}</p>
+          <p><a class="btn btn-lg btn-light" (click)="onRedirectOrder()">{{ 'GET_AN_OFFER_BUTTON' | translate }}<i class="bi bi-chevron-double-right" style="padding-left: 10px;"></i></a></p>
+        </div>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="./assets/images/banner_slider_4.jpg" class="d-block w-100" alt="...">
+      <div class="container">
+        <div class="carousel-caption text-start text-dark fw-bold">
+          <h1 class="function-heading">{{ 'ORDER_HISTORY' | translate }}</h1>
+          <p>{{ 'ORDER_HISTORY_SHORT_PARAG' | translate }}</p>
+          <p><a class="btn btn-lg btn-dark" (click)="onRedirectOrderHistory()">{{ 'ORDER_HISTORY_BUTTON' | translate }}<i class="bi bi-chevron-double-right" style="padding-left: 10px;"></i></a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#clone-box-carousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#clone-box-carousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+</section>
+<section>
+  <div class="container">
+    <div class="row marketing">
+      <div class="col-lg-4">
+        <img class="mb-2" src="./assets/images/sign_up.png" width="140" height="140">
+        <h2 class="fw-normal function-heading">{{ 'CREATE_ACCOUNT' | translate }}</h2>
+        <p style="min-height: 100px;">{{ 'CREATE_ACCOUNT_LONG_PARAG' | translate }}</p>
+        <p><a class="btn btn-secondary" (click)="onCreateAccount()">{{ 'VIEW_DETAILS' | translate }}<i class="bi bi-chevron-double-right" style="padding-left: 10px;"></i></a></p>
+      </div><!-- /.col-lg-4 -->
+      <div class="col-lg-4">
+        <img class="text-center mb-2" src="./assets/images/order.png" width="140" height="140">
+        <h2 class="fw-normal function-heading">{{ 'ORDER' | translate }}</h2>
+        <p style="min-height: 100px;">{{ 'ORDER_LONG_PARAG' | translate }}</p>
+        <p><a class="btn btn-secondary" (click)="onRedirectOrder()">{{ 'VIEW_DETAILS' | translate }}<i class="bi bi-chevron-double-right" style="padding-left: 10px;"></i></a></p>
+      </div><!-- /.col-lg-4 -->
+      <div class="col-lg-4">
+        <img class="text-center mb-2" src="./assets/images/order_history.png" width="140" height="140">
+        <h2 class="fw-normal function-heading">{{ 'ORDER_HISTORY' | translate }}</h2>
+        <p style="min-height: 100px;">{{ 'ORDER_HISTORY_LONG_PARAG' | translate }}</p>
+        <p><a class="btn btn-secondary" (click)="onRedirectOrderHistory()">{{ 'VIEW_DETAILS' | translate }}<i class="bi bi-chevron-double-right" style="padding-left: 10px;"></i></a></p>
+    </div><!-- /.col-lg-4 -->
+    </div>
+
+    <hr class="divider">
+    <div class="row featurette align-items-center gy-5 gy-md-0" style="height: 450px;">
+      <div class="col-md-7">
+        <h2 class="featurette-heading fw-normal lh-1"><span class="text-muted">{{ 'CLASSIC' | translate }} </span>{{ 'BOX' | translate }}</h2>
+        <p class="lead featurette-content">
+          {{ 'CLASSIC_BOX_DESCRIPTION' | translate }}
+        </p>
+      </div>
+      <div class="col-md-5">
+        <img src="../../assets/images/classic_box.png" class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto product_image" width="450" height="450" focusable="false">
+      </div>
+    </div>
+    <hr class="divider">
+    <div class="row featurette align-items-center gy-5 gy-md-0" style="height: 450px;">
+      <div class="col-md-7 order-md-2">
+        <h2 class="featurette-heading fw-normal lh-1"><span class="text-muted">{{ 'OPEN' | translate }} </span>{{ 'BOX' | translate }}</h2>
+        <p class="lead featurette-content">
+          {{ 'OPEN_BOX_DESCRIPTION' | translate }}
+        </p>
+      </div>
+      <div class="col-md-5 order-md-1">
+        <img src="../../assets/images/open_box.png" class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto product_image" width="500" height="500" focusable="false">
+      </div>
+    </div>
+    <hr class="divider">
+    <div class="row featurette align-items-center gy-5 gy-md-0" style="height: 450px;">
+      <div class="col-md-7">
+        <h2 class="featurette-heading fw-normal lh-1"><span class="text-muted">CO3 </span>{{ 'STRUCTURE' | translate }}</h2>
+        <p class="lead featurette-content">
+          {{ 'CO3_STRUCTURE_DESCRIPTION' | translate }}
+        </p>
+        <p class="lead featurette-content">
+          {{ 'THICKNESS' | translate }}: 3 mm
+        </p>
+      </div>
+      <div class="col-md-5">
+        <img src="../../assets/images/co_3_structure.png" class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto product_image" width="500" height="500" focusable="false">
+      </div>
+    </div>
+    <hr class="divider">
+    <div class="row featurette align-items-center gy-5 gy-md-0" style="height: 450px;">
+      <div class="col-md-7 order-md-2">
+        <h2 class="featurette-heading fw-normal lh-1"><span class="text-muted">CO5 </span>{{ 'STRUCTURE' | translate }}</h2>
+        <p class="lead featurette-content">
+          {{ 'CO5_STRUCTURE_DESCRIPTION' | translate }}
+        </p>
+        <p class="lead featurette-content">
+          {{ 'THICKNESS' | translate }}: 5 mm
+        </p>
+      </div>
+      <div class="col-md-5 order-md-1">
+        <img src="../../assets/images/co_5_structure.png" class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto product_image" width="500" height="500" focusable="false">
+      </div>
+    </div>
+    <hr class="last-divider">
+  </div>
+</section>
+

@@ -41,7 +41,7 @@ export class CalculatorService {
   }
 
   getCalculationResult(items: Item[]): CalculationResult {
-    let finalCalculationResult = new CalculationResult(0, 0, 0, 0, 0);
+    let finalCalculationResult = new CalculationResult(0, 0, 0, 0, 0, items);
 
     let addToSummary = (boxCalculation: CalculationResult) => {
       finalCalculationResult.materialArea += boxCalculation.materialArea;
@@ -59,14 +59,8 @@ export class CalculatorService {
         case 'open':
           addToSummary(this.getOpenBoxCalculation(item));
           break;
-        case 'sheet':
-          addToSummary(this.getCardboardSheetCalculation(item));
-          break;
       }
     });
-
-    console.log(finalCalculationResult);
-    console.log(this.roundWithTwoDecimals(finalCalculationResult));
 
     return this.roundWithTwoDecimals(finalCalculationResult);
   }
@@ -113,13 +107,6 @@ export class CalculatorService {
       boxArea,
       boxVolume
     );
-  }
-
-  private getCardboardSheetCalculation(item: Item): CalculationResult {
-    const materialArea = (item.length * item.width) / Math.pow(10, 6);
-    const price = materialArea * item.structure.price;
-
-    return new CalculationResult(item.quantity, price, materialArea);
   }
 
   private roundWithTwoDecimals(

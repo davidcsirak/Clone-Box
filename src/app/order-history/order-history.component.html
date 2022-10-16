@@ -1,0 +1,119 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <div *ngIf="isLoading" class="row justify-content-center mt-5">
+        <div class="col-12" style="text-align: center;">
+          <app-loading-spinner></app-loading-spinner>
+        </div>
+      </div>
+
+      <div *ngIf="!this.isLoading && (userOrders.length == 0)" class="row justify-content-center mt-5">
+        <div class="col-6 text-center">
+          <h1>{{ 'NO_ORDERS_FOUND' | translate }}</h1>
+          <img class="mt-5 img-fluid" src="./assets/images/no-results.png">
+        </div>
+      </div>
+
+      <div *ngIf="!this.isLoading && (userOrders.length != 0)" class="row justify-content-center mt-5" id="order-history">
+        <div class="col-md-12 col-lg-9 col-xl-7">
+
+          <div *ngFor="let userOrder of userOrders" class="card shadow-sm text-center mt-5">
+            <div class="card-header text-white text-center" style="background-color: var(--dark-grey)">
+              <h6 class="py-3">{{ 'ORDER_DETAILS' | translate | uppercase }}</h6>
+              <h1 class="pb-3 date-heading">{{ userOrder.orderedAt | date: 'medium' }}</h1>
+            </div>
+            <div class="card-body">
+              <div class="row justify-content-center">
+                <div class="col-12" id="orderBoxInfo">
+                  <div class="table-responsive">
+                    <table class="table align-middle table-hover">
+                      <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">{{ 'BOX_TYPE' | translate }}</th>
+                        <th scope="col">{{ 'STRUCTURE' | translate }}</th>
+                        <th scope="col">{{ 'LENGTH' | translate }} (mm)</th>
+                        <th scope="col">{{ 'WIDTH' | translate }} (mm)</th>
+                        <th scope="col">{{ 'HEIGHT' | translate }} (mm)</th>
+                        <th scope="col">{{ 'QUANTITY' | translate }}</th>
+                      </tr>
+                      </thead>
+                      <tbody class="table-group-divider">
+                      <tr *ngFor="let item of userOrder.calcResult.items; let i = index">
+                        <th scope="row">{{ i + 1 }}</th>
+                        <td>{{ item.box.name }}</td>
+                        <td>{{ item.structure.name }}</td>
+                        <td>{{ item.length }}</td>
+                        <td>{{ item.width }}</td>
+                        <td>{{ item.height }}</td>
+                        <td>{{ item.quantity }}</td>
+                      </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row mt-4 mt-lg-3 justify-content-center">
+                <div class="col-12">
+                  <div class="row justify-content-center">
+                    <div class="col-12">
+                      <div class="table-responsive">
+                        <div class="table table-hover align-middle" style="width: 100%">
+                          <tbody style="width: 100%; display: table">
+                          <tr>
+                            <th colspan="100" class="text-start" scope="row">{{ 'COMPANY_NAME' | translate }}:</th>
+                            <td colspan="100" class="text-end">{{ userOrder.companyName }}</td>
+                          </tr>
+                          <tr>
+                            <th colspan="100" class="text-start" scope="row">{{ 'CONTACT_PERSON' | translate }}:</th>
+                            <td colspan="100" class="text-end">{{ userOrder.contactPerson }}</td>
+                          </tr>
+                          <tr>
+                            <th colspan="100" class="text-start" scope="row">{{ 'PHONE' | translate }}:</th>
+                            <td colspan="100" class="text-end">{{ userOrder.phone }}</td>
+                          </tr>
+                          <tr>
+                            <th colspan="100" class="text-start" scope="row">{{ 'EMAIL_ADRESS' | translate }}:</th>
+                            <td colspan="100" class="text-end">{{ userOrder.email }}</td>
+                          </tr>
+                          <tr>
+                            <th colspan="100" class="text-start" scope="row">{{ 'ADDRESS' | translate }}:</th>
+                            <td colspan="100" class="text-end">{{ userOrder.address }}</td>
+                          </tr>
+                          <tr>
+                            <th colspan="100" class="text-start" scope="row">{{ 'TOTAL_BOXES' | translate }}:</th>
+                            <td colspan="100" class="text-end">{{ userOrder.calcResult.quantity }}</td>
+                          </tr>
+                          <tr>
+                            <th colspan="100" class="text-start" scope="row">{{ 'TOTAL_BOX_AREA' | translate }}:</th>
+                            <td colspan="100" class="text-end">{{ userOrder.calcResult.boxArea }} &#13217;</td>
+                          </tr>
+                          <tr>
+                            <th colspan="100" class="text-start" scope="row">{{ 'TOTAL_VOLUME' | translate }}:</th>
+                            <td colspan="100" class="text-end">{{ userOrder.calcResult.boxVolume }} &#13217;</td>
+                          </tr>
+                          <tr>
+                            <th colspan="100" class="text-start" scope="row">{{ 'MATERIAL_AREA' | translate }}:</th>
+                            <td colspan="100" class="text-end">{{ userOrder.calcResult.materialArea }} &#13217;</td>
+                          </tr>
+                          <tr>
+                            <th colspan="100" class="text-start" scope="row">{{ 'TOTAL_PRICE' | translate }}:</th>
+                            <td colspan="100" class="text-end">{{ userOrder.calcResult.price }} EUR</td>
+                          </tr>
+                          </tbody>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <hr class="divider">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

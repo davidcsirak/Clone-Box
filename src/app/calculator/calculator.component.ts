@@ -4,7 +4,8 @@ import { CalculatorService } from '../shared/services/calculator.service';
 import { Box } from '../model/box.model';
 import { Structure } from '../model/structure.model';
 import { Item } from '../model/item.model';
-import { CalculationResult } from '../model/calculationResult.model';
+import { ActivatedRoute, Router } from '@angular/router';
+import { GlobalService } from '../shared/services/global.service';
 
 @Component({
   selector: 'app-calculator',
@@ -18,30 +19,36 @@ export class CalculatorComponent implements OnInit {
   box: Box;
   structure: Structure;
   items: Item[] = [];
-  calculationResult: CalculationResult = null;
+  isCalculated = false;
 
-  constructor(private calcService: CalculatorService) {}
+  constructor(
+    private calcService: CalculatorService,
+    private router: Router,
+    private route: ActivatedRoute,
+    private globalService: GlobalService
+  ) {}
 
   ngOnInit(): void {
     this.initForm();
+    this.globalService.removeCalcResult();
     this.getBoxTypes();
     this.getStructureTypes();
+    this.calcForm.valueChanges.subscribe(() => {
+      this.isCalculated = false;
+    });
   }
 
   private initForm() {
     this.calcForm = new FormGroup({
       items: new FormArray([this.initialItemFormGroup]),
     });
-    this.itemsFormArray.get('length');
   }
 
   onAddItem() {
     (<FormArray>this.calcForm.get('items')).push(this.initialItemFormGroup);
   }
 
-  onSubmit() {
-    console.log(this.calcForm.value);
-    this.calculationResult = null;
+  onSubmit(submitType: string): void {
     this.items = [];
     this.calcForm.value.items.map((itemData) => {
       const newItem = this.calcService.createItem(
@@ -55,7 +62,19 @@ export class CalculatorComponent implements OnInit {
       this.items.push(newItem);
     });
 
-    this.calculationResult = this.calcService.getCalculationResult(this.items);
+    if (submitType == 'calculateSubmitEvent') {
+      this.globalService.setCalcResult(
+        this.calcService.getCalculationResult(this.items)
+      );
+      this.isCalculated = true;
+    } else if (submitType == 'toOrderSubmit') {
+      this.globalService.setCalcResult(
+        this.calcService.getCalculationResult(this.items)
+      );
+      this.router.navigate(['order'], {
+        relativeTo: this.route,
+      });
+    }
   }
 
   get controls() {
@@ -126,7 +145,7 @@ export class CalculatorComponent implements OnInit {
   }
 
   onReset() {
-    this.calcForm.reset();
-    this.calculationResult = null;
+    this.initForm();
+    this.globalService.removeCalcResult();
   }
 }

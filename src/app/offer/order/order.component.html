@@ -1,0 +1,59 @@
+<hr>
+<div class="row justify-content-center">
+  <div class="col-12">
+    <form [formGroup]="orderForm" (ngSubmit)="onSubmit()">
+      <div class="form-floating mb-3">
+        <input
+          type="text"
+          class="form-control"
+          id="companyName"
+          placeholder="Clone Box"
+          formControlName="companyName"
+          [ngClass]="{'is-invalid': orderForm.get('companyName').touched && orderForm.get('companyName').invalid, 'is-valid': orderForm.get('companyName').touched && orderForm.get('companyName').valid}">
+        <label for="companyName">{{ 'COMPANY_NAME' | translate }}</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input
+          type="text"
+          class="form-control"
+          id="contactPerson"
+          placeholder="John Doe"
+          formControlName="contactPerson"
+          [ngClass]="{'is-invalid': orderForm.get('contactPerson').touched && orderForm.get('contactPerson').invalid, 'is-valid': orderForm.get('contactPerson').touched && orderForm.get('contactPerson').valid}">
+        <label for="contactPerson">{{ 'CONTACT_PERSON' | translate }}</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input
+          type="email"
+          class="form-control"
+          id="emailInput"
+          placeholder="name@example.com"
+          formControlName="emailInput"
+          [ngClass]="{'is-invalid': orderForm.get('emailInput').touched && orderForm.get('emailInput').invalid, 'is-valid': orderForm.get('emailInput').touched && orderForm.get('emailInput').valid}">
+        <label for="emailInput">{{ 'EMAIL_ADRESS' | translate }}</label>
+      </div>
+      <div class="wrapper mb-3">
+        <ngx-intl-tel-input
+          formControlName="phone"
+          [preferredCountries]="preferredCountries"
+          [enableAutoCountrySelect]="true"
+          [searchCountryFlag]="true"
+          [enablePlaceholder]="false">
+        </ngx-intl-tel-input>
+      </div>
+      <div class="form-floating mb-3">
+        <textarea
+          class="form-control"
+          placeholder="Leave a comment here"
+          id="address"
+          formControlName="address"
+          style="height: 150px"
+          [ngClass]="{'is-invalid': orderForm.get('address').touched && orderForm.get('address').invalid, 'is-valid': orderForm.get('address').touched && orderForm.get('address').valid}"></textarea>
+        <label for="address">{{ 'ADDRESS' | translate }}</label>
+      </div>
+      <div class="text-center mb-3">
+        <button class="btn btn-success btn-lg" [disabled]="orderForm.invalid"><i class="bi bi-cart2" style="padding-right: 10px;"></i>{{ 'ORDER_NOW' | translate }}</button>
+      </div>
+    </form>
+  </div>
+</div>

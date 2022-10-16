@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AuthService } from '../auth/auth.service';
 import { TranslateService } from '@ngx-translate/core';
-import { UsersService } from '../shared/services/users.service';
 
 @Component({
   selector: 'app-header',
@@ -11,23 +10,19 @@ import { UsersService } from '../shared/services/users.service';
 })
 export class HeaderComponent implements OnInit {
   isAuthenticated: boolean;
-  currentUserUid: any = null;
 
   constructor(
     private fireAuth: AngularFireAuth,
     private authService: AuthService,
-    private translate: TranslateService,
-    public usersService: UsersService
+    private translate: TranslateService
   ) {}
 
   ngOnInit(): void {
     this.fireAuth.authState.subscribe((user) => {
-      if (user && user.uid) {
+      if (user != null) {
         this.isAuthenticated = true;
-        this.currentUserUid = user.uid;
       } else {
         this.isAuthenticated = false;
-        this.currentUserUid = null;
       }
     });
   }

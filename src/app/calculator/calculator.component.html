@@ -1,206 +1,138 @@
-<div class="row justify-content-center pt-5">
-  <div class="div col-md-12 col-lg-10 col-xl-8">
-
-    <div class="row" *ngIf="calculationResult">
-      <div class="col-md-12">
-
-        <div class="row">
-          <div class="col-sm-12 col-md-6 col-xl">
-            <div class="card mb-4 rounded-3 shadow-sm">
-              <div class="card-header py-3 text-bg-secondary border-secondary text-center">
-                <h4 class="my-0 fw-normal" style="min-height: 57px;">{{ 'TOTAL_PRICE' | translate }}</h4>
-                <hr>
-                <img src="./assets/images/box_price.png" width="40" height="40">
-              </div>
-              <div class="card-body text-center">
-                <h3 class="card-title pricing-card-title">{{ calculationResult.price }}</h3>
-                <h4><small class="text-muted fw-light"><i class="bi bi-currency-euro"></i></small></h4>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-12 col-md-6 col-xl">
-            <div class="card mb-4 rounded-3 shadow-sm">
-              <div class="card-header py-3 text-bg-secondary border-secondary text-center">
-                <h4 class="my-0 fw-normal" style="min-height: 57px;">{{ 'MATERIAL_AREA' | translate }}</h4>
-                <hr>
-                <img src="./assets/images/material_area.png" width="40" height="40">
-              </div>
-              <div class="card-body text-center">
-                <h3 class="card-title pricing-card-title">{{ calculationResult.materialArea }}</h3>
-                <h4><small class="text-muted fw-light">&#13217;</small></h4>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-12 col-md-4 col-xl">
-            <div class="card mb-4 rounded-3 shadow-sm">
-              <div class="card-header py-3 text-bg-secondary border-secondary text-center">
-                <h4 class="my-0 fw-normal" style="min-height: 57px;">{{ 'TOTAL_BOX_AREA' | translate }}</h4>
-                <hr>
-                <img src="./assets/images/box_area.png" width="40" height="40">
-              </div>
-              <div class="card-body text-center">
-                <h3 class="card-title pricing-card-title">{{ calculationResult.boxArea }}</h3>
-                <h4><small class="text-muted fw-light">&#13217;</small></h4>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-12 col-md-4 col-xl">
-            <div class="card mb-4 rounded-3 shadow-sm">
-              <div class="card-header py-3 text-bg-secondary border-secondary text-center">
-                <h4 class="my-0 fw-normal" style="min-height: 57px;">{{ 'TOTAL_VOLUME' | translate }}</h4>
-                <hr>
-                <img src="./assets/images/box_volume.png" width="40" height="40">
-              </div>
-              <div class="card-body text-center">
-                <h3 class="card-title pricing-card-title">{{ calculationResult.boxVolume }}</h3>
-                <h4><small class="text-muted fw-light">L</small></h4>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-12 col-md-4 col-xl">
-            <div class="card mb-4 rounded-3 shadow-sm">
-              <div class="card-header py-3 text-bg-secondary border-secondary text-center">
-                <h4 class="my-0 fw-normal" style="min-height: 57px;">{{ 'TOTAL_BOXES' | translate }}</h4>
-                <hr>
-                <img src="./assets/images/total_boxes.png" width="40" height="40">
-              </div>
-              <div class="card-body text-center">
-                <h3 class="card-title pricing-card-title">{{ calculationResult.quantity }}</h3>
-                <h4><small class="text-muted fw-light">Piece</small></h4>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <hr>
-    <form [formGroup]="calcForm" (ngSubmit)="onSubmit()">
-      <div class="row">
-        <div class="col-md-12 text-center">
-          <button class="btn btn-secondary mx-5" (click)="onAddItem()" type="button"><i class="bi bi-plus-lg" style="padding-right: 10px;"></i>{{ 'ADD' | translate }}</button>
-          <button class="btn btn-danger" (click)="onReset()" type="button"><i class="bi bi-x-lg" style="padding-right: 10px;"></i>{{ 'RESET' | translate }}</button>
-        </div>
-      </div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
       <hr>
-      <div class="row text-center align-items-center">
-        <div class="col-6 col-lg-3"><label for="boxType">{{ 'BOX_TYPE' | translate }}</label></div>
-        <div class="col-6 col-lg-3"><label for="structure">{{ 'STRUCTURE' | translate }}</label></div>
-        <div class="col-3 col-lg"><label for="length">{{ 'LENGTH' | translate }} (mm)</label></div>
-        <div class="col-3 col-lg"><label for="width"></label>{{ 'WIDTH' | translate }} (mm)</div>
-        <div class="col-3 col-lg"><label for="height"></label>{{ 'HEIGHT' | translate }} (mm)</div>
-        <div class="col-3 col-lg"><label for="quantity"></label>{{ 'QUANTITY' | translate }} (mm)</div>
-        <div class="col-12 col-lg-1"></div>
-      </div>
-      <div class="row">
-        <div class="col-md-12 text-center" formArrayName="items">
-          <div
-            class="row my-5 my-lg-3 gy-2 gy-lg-0"
-            *ngFor="let itemsCtrl of controls; let i = index;"
-            [formGroupName]=i>
-            <div class="col-6 col-lg-3 text-center">
-              <select
-                class="form-select"
-                id="boxType"
-                formControlName="boxType"
-                #boxType
-                [ngClass]="{'is-invalid': itemsFormArray.at(i).get('boxType').touched && itemsFormArray.at(i).get('boxType').invalid, 'is-valid': itemsFormArray.at(i).get('boxType').touched && itemsFormArray.at(i).get('boxType').valid}">
-                <option value="null" disabled="true" [selected]="true" class="fw-bold">{{ 'SELECT_BOX_TYPE' | translate }}</option>
-                <option *ngFor="let box of boxTypes" value="{{ box.type }}">{{ box.name | translate }}</option>
-              </select>
-              <div *ngIf="boxType.classList.contains('is-invalid')" class="invalid-feedback">
-                {{ 'BOX_SELECT_ERROR' | translate }}
-              </div>
-              <div class="row pt-2" *ngIf="(boxType.value != 'null') && (i == controls.length-1)">
-                <div class="col-12">
-                  <img src="./assets/images/{{ boxType.value }}_box.jpg" class="img-fluid rounded shadow-sm w-100" style="height: 140px;">
-                </div>
-              </div>
+      <form [formGroup]="calcForm" (ngSubmit)="onSubmit($event.submitter.id)">
+        <div class="row">
+          <div class="col-md-12 d-flex justify-content-evenly justify-content-md-between">
+            <div class="text-center">
+              <button class="btn btn-dark mx-5 mb-2 mb-sm-0" (click)="onAddItem()" type="button"><i class="bi bi-plus-lg" style="padding-right: 10px;"></i>{{ 'ADD' | translate }}</button>
+              <button class="btn btn-danger" (click)="onReset()" type="button"><i class="bi bi-arrow-repeat" style="padding-right: 10px;"></i>{{ 'RESET' | translate }}</button>
             </div>
-            <div class="col-6 col-lg-3 text-center">
-              <select
-                class="form-select"
-                id="structure"
-                formControlName="structure"
-                #structureType
-                [ngClass]="{'is-invalid': itemsFormArray.at(i).get('structure').touched && itemsFormArray.at(i).get('structure').invalid, 'is-valid': itemsFormArray.at(i).get('structure').touched && itemsFormArray.at(i).get('structure').valid}">>
-                <option value="null" disabled="true" [selected]="true" class="fw-bold">{{ 'SELECT_STRUCTURE' | translate }}</option>
-                <option *ngFor="let structure of structureTypes" value="{{ structure.type }}">{{ structure.name + " - " + "(" + structure.thickness + "mm" + ")"}}</option>
-              </select>
-              <div *ngIf="structureType.classList.contains('is-invalid')" class="invalid-feedback">
-                {{ 'STRUCTURE_SELECT_ERROR' | translate }}
-              </div>
-              <div class="row pt-2" *ngIf="(structureType.value != 'null') && (i == controls.length-1)">
-                <div class="col-12">
-                  <img src="../../assets/images/{{ structureType.value }}_structure.jpg" class="img-fluid rounded shadow-sm w-100" style="height: 140px;">
-                </div>
-              </div>
-            </div>
-
-            <div class="col-3 col-lg">
-              <input
-                type="number"
-                class="form-control"
-                id="length"
-                formControlName="length"
-                placeholder="{{ 'LENGTH' | translate }}"
-                #boxLength
-                [ngClass]="{'is-invalid': itemsFormArray.at(i).get('length').touched && itemsFormArray.at(i).get('length').invalid, 'is-valid': itemsFormArray.at(i).get('length').touched && itemsFormArray.at(i).get('length').valid}">
-              <div *ngIf="boxLength.classList.contains('is-invalid')" class="invalid-feedback">
-                MIN 100
-              </div>
-            </div>
-            <div class="col-3 col-lg">
-              <input
-                type="number"
-                class="form-control"
-                id="width"
-                formControlName="width"
-                placeholder="{{ 'WIDTH' | translate }}"
-                #boxWidth
-                [ngClass]="{'is-invalid': itemsFormArray.at(i).get('width').touched && itemsFormArray.at(i).get('width').invalid, 'is-valid': itemsFormArray.at(i).get('width').touched && itemsFormArray.at(i).get('width').valid}">
-              <div *ngIf="boxWidth.classList.contains('is-invalid')" class="invalid-feedback">
-                MIN 100
-              </div>
-            </div>
-            <div class="col-3 col-lg">
-              <input
-                type="number"
-                class="form-control"
-                id="height"
-                formControlName="height"
-                placeholder="{{ 'HEIGHT' | translate }}"
-                #boxHeight
-                [ngClass]="{'is-invalid': itemsFormArray.at(i).get('height').touched && itemsFormArray.at(i).get('height').invalid, 'is-valid': itemsFormArray.at(i).get('width').touched && itemsFormArray.at(i).get('height').valid}">
-              <div *ngIf="boxHeight.classList.contains('is-invalid')" class="invalid-feedback">
-                MIN 100
-              </div>
-            </div>
-            <div class="col-3 col-lg">
-              <input
-                type="number"
-                class="form-control"
-                id="quantity"
-                formControlName="quantity"
-                placeholder="{{ 'QUANTITY' | translate }}"
-                #boxNumber
-                [ngClass]="{'is-invalid': itemsFormArray.at(i).get('quantity').touched && itemsFormArray.at(i).get('quantity').invalid, 'is-valid': itemsFormArray.at(i).get('quantity').touched && itemsFormArray.at(i).get('quantity').valid}">
-              <div *ngIf="boxNumber.classList.contains('is-invalid')" class="invalid-feedback">
-                MIN 1
-              </div>
-            </div>
-            <div class="col-12 col-lg-1 text-center">
-              <button *ngIf="i > 0" class="btn btn-danger w-100 text-center" (click)="onDeleteItem(i)">X</button>
+            <div class="align-self-center">
+              <button *ngIf="calcForm.valid && isCalculated" id="toOrderSubmit" class="btn btn-warning" type="submit">Tovább a rendeléshez<i class="bi bi-chevron-double-right" style="padding-left: 10px;"></i></button>
             </div>
           </div>
         </div>
-      </div>
-      <div class="row my-4">
-        <div class="col-md-12 text-center">
-          <button class="btn btn-success" type="submit" [disabled]="!calcForm.valid"><i class="bi bi-check-lg" style="padding-right: 10px;"></i>{{ 'CALCULATE' | translate }}</button>
+        <hr>
+        <div class="row text-center align-items-center">
+          <div class="col-6 col-lg-3"><label for="boxType">{{ 'BOX_TYPE' | translate }}</label></div>
+          <div class="col-6 col-lg-3"><label for="structure">{{ 'STRUCTURE' | translate }}</label></div>
+          <div class="col-3 col-lg"><label for="length">{{ 'LENGTH' | translate }} (mm)</label></div>
+          <div class="col-3 col-lg"><label for="width"></label>{{ 'WIDTH' | translate }} (mm)</div>
+          <div class="col-3 col-lg"><label for="height"></label>{{ 'HEIGHT' | translate }} (mm)</div>
+          <div class="col-3 col-lg"><label for="quantity"></label>{{ 'QUANTITY' | translate }}</div>
+          <div class="col-12 col-lg-1"></div>
         </div>
-      </div>
-    </form>
+        <div class="row">
+          <div class="col-md-12 text-center" formArrayName="items">
+            <div
+              class="row my-5 my-lg-3 gy-2 gy-lg-0"
+              *ngFor="let itemsCtrl of controls; let i = index;"
+              [formGroupName]=i>
+              <div class="col-6 col-lg-3 text-center">
+                <select
+                  class="form-select"
+                  id="boxType"
+                  formControlName="boxType"
+                  #boxType
+                  [ngClass]="{'is-invalid': itemsFormArray.at(i).get('boxType').touched && itemsFormArray.at(i).get('boxType').invalid, 'is-valid': itemsFormArray.at(i).get('boxType').touched && itemsFormArray.at(i).get('boxType').valid}">
+                  <option value="null" disabled="true" [selected]="true" class="fw-bold">{{ 'SELECT_BOX_TYPE' | translate }}</option>
+                  <option *ngFor="let box of boxTypes" value="{{ box.type }}">{{ box.name | translate }}</option>
+                </select>
+                <div *ngIf="boxType.classList.contains('is-invalid')" class="invalid-feedback">
+                  {{ 'BOX_SELECT_ERROR' | translate }}
+                </div>
+                <div class="row pt-2" *ngIf="(boxType.value != 'null') && (i == controls.length-1)">
+                  <div class="col-12">
+                    <img src="./assets/images/{{ boxType.value }}_box.png" class="img-fluid" style="height: 180px;">
+                  </div>
+                </div>
+              </div>
+              <div class="col-6 col-lg-3 text-center">
+                <select
+                  class="form-select"
+                  id="structure"
+                  formControlName="structure"
+                  #structureType
+                  [ngClass]="{'is-invalid': itemsFormArray.at(i).get('structure').touched && itemsFormArray.at(i).get('structure').invalid, 'is-valid': itemsFormArray.at(i).get('structure').touched && itemsFormArray.at(i).get('structure').valid}">>
+                  <option value="null" disabled="true" [selected]="true" class="fw-bold">{{ 'SELECT_STRUCTURE' | translate }}</option>
+                  <option *ngFor="let structure of structureTypes" value="{{ structure.type }}">{{ structure.name + " - " + "(" + structure.thickness + "mm" + ")"}}</option>
+                </select>
+                <div *ngIf="structureType.classList.contains('is-invalid')" class="invalid-feedback">
+                  {{ 'STRUCTURE_SELECT_ERROR' | translate }}
+                </div>
+                <div class="row pt-2" *ngIf="(structureType.value != 'null') && (i == controls.length-1)">
+                  <div class="col-12">
+                    <img src="../../assets/images/{{ structureType.value }}_structure.png" class="img-fluid" style="height: 180px;">
+                  </div>
+                </div>
+              </div>
 
+              <div class="col-3 col-lg">
+                <input
+                  type="number"
+                  class="form-control"
+                  id="length"
+                  formControlName="length"
+                  placeholder="{{ 'LENGTH' | translate }}"
+                  #boxLength
+                  [ngClass]="{'is-invalid': itemsFormArray.at(i).get('length').touched && itemsFormArray.at(i).get('length').invalid, 'is-valid': itemsFormArray.at(i).get('length').touched && itemsFormArray.at(i).get('length').valid}">
+                <div *ngIf="boxLength.classList.contains('is-invalid')" class="invalid-feedback">
+                  MIN 100
+                </div>
+              </div>
+              <div class="col-3 col-lg">
+                <input
+                  type="number"
+                  class="form-control"
+                  id="width"
+                  formControlName="width"
+                  placeholder="{{ 'WIDTH' | translate }}"
+                  #boxWidth
+                  [ngClass]="{'is-invalid': itemsFormArray.at(i).get('width').touched && itemsFormArray.at(i).get('width').invalid, 'is-valid': itemsFormArray.at(i).get('width').touched && itemsFormArray.at(i).get('width').valid}">
+                <div *ngIf="boxWidth.classList.contains('is-invalid')" class="invalid-feedback">
+                  MIN 100
+                </div>
+              </div>
+              <div class="col-3 col-lg">
+                <input
+                  type="number"
+                  class="form-control"
+                  id="height"
+                  formControlName="height"
+                  placeholder="{{ 'HEIGHT' | translate }}"
+                  #boxHeight
+                  [ngClass]="{'is-invalid': itemsFormArray.at(i).get('height').touched && itemsFormArray.at(i).get('height').invalid, 'is-valid': itemsFormArray.at(i).get('width').touched && itemsFormArray.at(i).get('height').valid}">
+                <div *ngIf="boxHeight.classList.contains('is-invalid')" class="invalid-feedback">
+                  MIN 100
+                </div>
+              </div>
+              <div class="col-3 col-lg">
+                <input
+                  type="number"
+                  class="form-control"
+                  id="quantity"
+                  formControlName="quantity"
+                  placeholder="{{ 'QUANTITY' | translate }}"
+                  #boxNumber
+                  [ngClass]="{'is-invalid': itemsFormArray.at(i).get('quantity').touched && itemsFormArray.at(i).get('quantity').invalid, 'is-valid': itemsFormArray.at(i).get('quantity').touched && itemsFormArray.at(i).get('quantity').valid}">
+                <div *ngIf="boxNumber.classList.contains('is-invalid')" class="invalid-feedback">
+                  MIN 1
+                </div>
+              </div>
+              <div class="col-12 col-lg-1 text-center">
+                <button *ngIf="i > 0" class="btn btn-danger w-100 text-center" (click)="onDeleteItem(i)">X</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row my-4">
+          <div class="col-md-12 text-center">
+            <button class="btn btn-success" id="calculateSubmitEvent" type="submit" [disabled]="!calcForm.valid"><i class="bi bi-check-lg" style="padding-right: 10px;"></i>{{ 'CALCULATE' | translate }}</button>
+          </div>
+        </div>
+      </form>
+    </div>
   </div>
 </div>

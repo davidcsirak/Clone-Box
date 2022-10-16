@@ -9,10 +9,11 @@
 
 .landing-page {
   font-family: 'sofia-pro-semibold', sans-serif;
-  /*background-color: #FCF4ED;*/
+  /*background: url( './assets/images/blob-scene-haikei.svg') no-repeat;
+  background-size: 100%;*/
 }
 
-.navbar-top {
+.navbar {
   font-family: 'cubano', sans-serif;
   --logo-color: #283132;
 }

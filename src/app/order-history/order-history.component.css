@@ -1,0 +1,18 @@
+th {
+  font-family: 'cubano', sans-serif;
+  font-weight: lighter;
+  font-size: large;
+}
+
+td {
+  font-style: italic;
+}
+
+.date-heading {
+  font-family: 'cubano', sans-serif;
+}
+
+.divider {
+  margin-bottom: 0;
+  margin-top: 5rem;
+}
