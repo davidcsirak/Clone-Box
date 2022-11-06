@@ -78,11 +78,13 @@
   "CLASSIC": "Klasszikus",
   "OPEN": "Nyitott",
   "BOX": "Doboz",
-  "CLASSIC_BOX_DESCRIPTION": "A klasszikus kartoncsomagolás különféle típusú, CO3 vagy CO5 szerkezetű hullámkarton lapokból készül. Minden oldala le van fedve. Különféle termékek csomagolására használják: élelmiszerek, italok, különféle elektronikai és telekommunikációs eszközök, építőanyagok, stb. A Cone Box által gyártott klasszikus kartoncsomagolások kiváló minőségűek, pontosan reprezentálják ügyfeleink termékeit, megőrzik a hazai és nemzetközi minőséget. higiéniai előírásokat.",
-  "OPEN_BOX_DESCRIPTION": "A klasszikus kartoncsomagolás különféle típusú, CO3 vagy CO5 szerkezetű hullámkarton lapokból készül. A doboz felső része nyitva marad. Különféle termékek csomagolására használják: élelmiszerek, italok, különféle elektronikai és telekommunikációs eszközök, építőanyagok, stb. A Cone Box által gyártott klasszikus kartoncsomagolások kiváló minőségűek, pontosan reprezentálják ügyfeleink termékeit, megőrzik a hazai és nemzetközi minőséget. higiéniai előírásokat.",
-  "CO3_STRUCTURE_DESCRIPTION": "A csomagolás 3 réteg papírból áll: külső fedél, belső fedél és a két fedél között hullámosított közeg. A külső fedél befolyásolja leginkább a hullámkarton csomagolás általános megjelenését, ennek következtében kiváló minőségű papírból készül, mint például tesztbélésű vagy nátronpapír, amely lehet fehéríthető vagy fehérítetlen (natúr szín). A belső fedél készülhet tesztbélésből, nátronfóliából vagy schrenz papírból, sokféle tömeggel.",
+  "CLASSIC_BOX_DESCRIPTION": "A klasszikus kartoncsomagolás különféle típusú, CO3 vagy CO5 szerkezetű kartonpapír lapokból készül. Minden oldala le van fedve. Különféle termékek csomagolására használják: élelmiszerek, italok, különféle elektronikai és telekommunikációs eszközök, építőanyagok, stb. A Cone Box által gyártott klasszikus kartoncsomagolások kiváló minőségűek, pontosan reprezentálják ügyfeleink termékeit, megőrzik a hazai és nemzetközi minőséget. higiéniai előírásokat.",
+  "OPEN_BOX_DESCRIPTION": "A klasszikus kartoncsomagolás különféle típusú, CO3 vagy CO5 szerkezetű kartonpapír lapokból készül. A doboz felső része nyitva marad. Különféle termékek csomagolására használják: élelmiszerek, italok, különféle elektronikai és telekommunikációs eszközök, építőanyagok, stb. A Cone Box által gyártott klasszikus kartoncsomagolások kiváló minőségűek, pontosan reprezentálják ügyfeleink termékeit, megőrzik a hazai és nemzetközi minőséget. higiéniai előírásokat.",
+  "CO3_STRUCTURE_DESCRIPTION": "A csomagolás 3 réteg papírból áll: külső fedél, belső fedél és a két fedél között hullámosított közeg. A külső fedél befolyásolja leginkább a kartonpapír csomagolás általános megjelenését, ennek következtében kiváló minőségű papírból készül, mint például tesztbélésű vagy nátronpapír, amely lehet fehéríthető vagy fehérítetlen (natúr szín). A belső fedél készülhet tesztbélésből, nátronfóliából vagy schrenz papírból, sokféle tömeggel.",
   "CO5_STRUCTURE_DESCRIPTION": "Csomagolás 5 réteg papírból: két fedőréteg, két hullámos réteg és egy közbenső réteg – ami rendkívüli mechanikai ellenállást biztosít a csomagolásnak. Általában nagyon nehéz, törékeny vagy masszív tárgyak becsomagolására használják.",
   "THICKNESS": "Vastagság",
   "LOGOUT_BUTTON": "Kijelentkezés",
-  "ORDER_SUCCESSFULLY": "A rendelését sikeresen elküldtük!"
+  "ORDER_SUCCESSFULLY": "A rendelését sikeresen elküldtük!",
+  "SEO_ORDER": "hullámkarton doboz rendelés",
+  "SEO_BOX": "hullámkarton doboz"
 }

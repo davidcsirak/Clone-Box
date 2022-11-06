@@ -37,7 +37,7 @@
         <li class="nav-item d-flex align-items-center mx-md-3">
           <a *ngIf="isAuthenticated" (click)="onLogOut()" class="nav-link btn btn-danger text-white px-3" routerLink="auth">
             <i class="bi bi-box-arrow-right" style="padding-right: 6px"></i>
-            {{ 'LOGOUT_BUTTON' | translate }}
+            <span class="d-md-inline-flex d-lg-none d-xxl-inline-flex">{{ 'LOGOUT_BUTTON' | translate }}</span>
           </a>
         </li>
         <li class="nav-item text-center">

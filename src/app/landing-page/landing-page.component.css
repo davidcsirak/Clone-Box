@@ -45,7 +45,6 @@
   .carousel .carousel-inner {
     height: 300px;
   }
-
   .carousel-item, .carousel-item img {
     position: absolute;
     object-fit:cover;
@@ -53,18 +52,15 @@
     left: 0;
     height: 300px;
   }
-
   .product_image {
     max-height: 250px;
   }
-
   .featurette-heading {
     font-size: 35px;
   }
   .featurette-content {
     font-size: 12px;
   }
-
   .userEmail-heading {
     font-size: 20px;
   }

@@ -55,6 +55,12 @@ export class AuthComponent implements OnInit, OnDestroy {
     this.authForm.reset();
   }
 
+  onGoogle() {
+    this.isLoading = true;
+    this.authService.signInWithGoogle();
+    this.authForm.reset();
+  }
+
   onSwitchMode() {
     this.isLoginMode = !this.isLoginMode;
     this.authForm.reset();
@@ -63,12 +69,6 @@ export class AuthComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.errMessageSub.unsubscribe();
     this.isLoadingSub.unsubscribe();
-  }
-
-  onGoogle() {
-    this.isLoading = true;
-    this.authService.signInWithGoogle();
-    this.authForm.reset();
   }
 
   closeError() {

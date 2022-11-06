@@ -84,5 +84,7 @@
   "CO5_STRUCTURE_DESCRIPTION": "Packaging made out of 5 layers of paper: two lid-layers, two corrugated layers and an intermediary layer - which gives the packaging an extraordinary mechanic resistance. It is generally used for wrapping very heavy, fragile or massive objects.",
   "THICKNESS": "Thickness",
   "LOGOUT_BUTTON": "Logout",
-  "ORDER_SUCCESSFULLY": "Your order has been successfully sent!"
+  "ORDER_SUCCESSFULLY": "Your order has been successfully sent!",
+  "SEO_ORDER": "Order carton box",
+  "SEO_BOX": "carton box"
 }
