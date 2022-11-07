@@ -8,5 +8,8 @@ export const environment = {
     messagingSenderId: '53093850370',
     measurementId: 'G-0087EJ09TQ',
   },
-  production: true
+  EMAIL_JS_SERVICE_ID: 'service_vavxrd6',
+  EMAIL_JS_TEMPLATE_ID: 'template_ilcdfug',
+  EMAIL_JS_PUBLIC_KEY: 'VrV5bpeEXTOVUX_G3',
+  production: true,
 };

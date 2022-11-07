@@ -43,7 +43,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     FooterComponent,
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AngularFireModule.initializeApp(environment.firebase),
     TranslateModule.forRoot({
       loader: {
